@@ -1,49 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather - Check Your City Weather</title>
+  <title>Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-  <h1>Check Your City Weather</h1>
   <div class="container">
+
     <div class="search">
-      <input type="text" required name="city" placeholder="Enter your city" autocomplete="off">
-      <button class="btn">search</button>
+      <input type="text" required name="city" placeholder="Enter a city…" autocomplete="off">
+      <button class="btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
     </div>
+
     <div class="error">
-      <p>Invalid City Name</p>
+      <p>City not found — try a different name.</p>
     </div>
+
     <div class="Weather">
-      <img src="./images/clouds.png" class="Weather-icon">
-      <h1 class="temp">22°c</h1>
-      <h2 class="city">firozabad</h2>
+      <div class="weather-top">
+        <div class="temp-block">
+          <h1 class="temp">22°C</h1>
+          <p class="condition">Partly cloudy</p>
+          <h2 class="city">London</h2>
+        </div>
+        <img src="" class="Weather-icon" alt="Weather condition icon">
+      </div>
+
+      <div class="divider"></div>
+
       <div class="detail">
         <div class="col">
-          <img src="./images/humidity.png">
+          <div class="icon-wrap">💧</div>
           <div>
+            <p class="stat-label">Humidity</p>
             <p class="humidity">50%</p>
-            <p>Humidity</p>
           </div>
         </div>
         <div class="col">
-          <img src="./images/wind.png">
+          <div class="icon-wrap">🌬</div>
           <div>
-            <p class="wind">20km/h</p>
-            <p>Wind Speed</p>
+            <p class="stat-label">Wind</p>
+            <p class="wind">20 km/h</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-<script src="./app.js"></script>
-  <footer>
-    <p>Copyright© 2023</p>
-  </footer>
+  <footer>© 2025 Weather</footer>
+  <script src="./app.js"></script>
 </body>
-
 </html>
