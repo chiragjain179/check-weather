@@ -1,116 +1,220 @@
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
-  font-family: "Work Sans", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: aqua;
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  color: #e8f4ff;
+  background: linear-gradient(145deg, #0a1628 0%, #1b3562 55%, #1a4a8a 100%);
+}
+
+body.w-clear    { background: linear-gradient(145deg, #1a1228 0%, #7b2d14 45%, #d4691e 80%, #f5a623 100%); }
+body.w-clouds   { background: linear-gradient(145deg, #111827 0%, #1f2e45 50%, #374b6a 100%); }
+body.w-rain     { background: linear-gradient(145deg, #07111e 0%, #0d2537 50%, #0b4055 100%); }
+body.w-drizzle  { background: linear-gradient(145deg, #0d1724 0%, #1a2d40 55%, #1e4060 100%); }
+body.w-snow     { background: linear-gradient(145deg, #1a2340 0%, #374b7a 50%, #607aad 85%, #8faad4 100%); }
+body.w-mist     { background: linear-gradient(145deg, #252d38 0%, #4a5a6a 55%, #7a8d9e 100%); }
+body.w-thunder  { background: linear-gradient(145deg, #08080f 0%, #150f2a 50%, #2a1450 100%); }
+
+.brand {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 20px;
+  align-self: flex-start;
+  max-width: 420px;
   width: 100%;
-  margin: 0px 0px;
-  padding: 0px 0px;
-  animation: fadeInAnimation ease 3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  height: 100vh;
 }
 
-h1 {
-  text-align: center;
-}
-
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .search {
   display: flex;
-  justify-content: center;
   gap: 10px;
-  align-items: center;
 }
 
 .search input {
-  border-radius: 20px;
-  width: 400px;
-  margin: 50px 10px;
-  padding: 10px;
-  font-size: 18px;
-  background-color: rgba(171, 245, 245, 0.895);
-  border: transparent;
-  box-shadow: 0px 6px 10px -2px;
-  color: black;
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e8f4ff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.search input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search input:focus {
+  border-color: rgba(130, 190, 255, 0.5);
+  background: rgba(255, 255, 255, 0.11);
 }
 
 .btn {
-  border-radius: 20px;
-  padding: 10px;
-  font-size: 18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #e8f4ff;
   cursor: pointer;
-  background-color: rgba(175, 243, 243, 0.895);
-  border: transparent;
-  box-shadow: 0px 6px 10px -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
 }
 
-.container {
-  background-color: aquamarine;
-  margin: 10vh;
-  border-radius: 20px;
-  box-shadow: 0px 6px 10px -2px;
-  padding: 10px;
-  width: 90%;
-  max-width: 470px;
-  text-align: center;
+.btn:hover  { background: rgba(255, 255, 255, 0.18); transform: scale(1.05); }
+.btn:active { transform: scale(0.93); }
+
+.btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.error {
+  display: none;
+  background: rgba(200, 40, 40, 0.14);
+  border: 1px solid rgba(220, 80, 80, 0.3);
+  border-radius: 14px;
+  padding: 14px 20px;
+  color: #ffb0b0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.Weather {
+  display: none;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 28px;
+  padding: 28px;
+  animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.weather-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.temp {
+  font-size: 76px;
+  font-weight: 700;
+  letter-spacing: -3px;
+  line-height: 1;
+  color: #ffffff;
+  margin: 0;
+}
+
+.condition {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 6px;
+  letter-spacing: 0.3px;
+}
+
+.city {
+  font-size: 24px;
+  font-weight: 600;
+  color: #e8f4ff;
+  margin-top: 8px;
+  letter-spacing: -0.3px;
 }
 
 .Weather-icon {
-  width: 40%;
-  margin-top: 10px;
+  width: 96px;
+  height: 96px;
+  margin-top: -8px;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  margin: 22px 0 20px;
 }
 
 .detail {
   display: flex;
-  justify-content: space-between;
-  padding: 0 10px;
-  margin: 20px;
-  align-items: center;
+  justify-content: space-around;
 }
 
-col {
+.col {
   display: flex;
   align-items: center;
-  text-align: left;
+  gap: 12px;
 }
 
-col img {
-  width: 40px;
-  margin-right: 10px;
+.col .icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
 
+.col .stat-label {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 2px;
 }
 
 .humidity,
 .wind {
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #e8f4ff;
+  line-height: 1.1;
 }
 
-.Weather {
- display: none;
-}
-
-.error {
-  text-align: left;
-  margin-top: 10px;
-  margin-left: 10px;
-  font-size: 15px;
-  color: red;
-  display: none;
+footer {
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.5px;
 }
